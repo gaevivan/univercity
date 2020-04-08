@@ -1,0 +1,52 @@
+html, body{
+	height: 100%;
+}
+.container{
+	min-height: 100%;
+}
+.logo{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+#column-r{
+    height:100%; 
+    border-left: solid 1px silver;
+}
+#column-l{
+    height:100%; 
+    border-right: solid 1px silver;
+}
+h3{
+	margin-top: 20px;
+	text-align: center;
+}
+p{
+	font-size: 12px;
+    color: gray;
+	text-align:center;
+}
+#active{
+	color: #2C8A56;
+}
+#activevalue{
+	color: #50CC50;
+}
+#btnadd{
+	margin-top:10px; 
+	font-size: 10pt; 
+	color: black;
+}
+#btnpause{
+	margin-top:10px; 
+	color: black; 
+	font-size: 11pt;
+}
+#btnA{ 
+	font-size: 9pt; 
+	color: black;
+}
+#btnD{
+	color: black; 
+	font-size: 9pt;
+}

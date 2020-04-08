@@ -1,0 +1,6 @@
+var count;
+var value;
+count = 5;
+value = 100 + count;
+value = value - count * 2;
+

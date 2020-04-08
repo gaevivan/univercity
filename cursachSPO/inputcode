@@ -1,0 +1,17 @@
+a = 5
+b = a
+for 2 {
+incr a
+decr b
+c = ( a * b ) / ( 7 - 4 )
+print c
+}
+while b > 0 {
+decr b
+print b
+}
+struct wardates : vov , ov
+wardates.vov = 1939
+wardates.sov = 1812
+d = wardates.vov + 2
+print d

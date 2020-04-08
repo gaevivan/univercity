@@ -1,0 +1,72 @@
+#!/usr/bin/python
+
+import random
+import math
+
+eng = 'abcdefghijlmnopqrstuvwxyz'
+
+class Contact:
+    def __init__(self, text, key):
+        self.text = text
+        self.key = key
+    def getkeyRSA(self, contact):
+        p = random.randint(2, 60)
+        q = random.randint(2, 60)
+        n = p * q
+        fn = ( p-1 ) * ( q-1 )
+        e = random.randint(1, fn)
+        d = pow(e, (-1), fn)
+        print '-----Public wire-----\nSent(->): ', e, n
+        key = e
+        contact.key = d
+    def getkey(self, contact):
+        p = random.randint(2, 60)
+        n = random.randint(2, 60)
+        a = random.randint(2, 60)
+        L0 = pow(p, a, n)
+        print '-----Public wire-----\nSent(->): ', p, n, L0
+        b = random.randint(2, 60)
+        Lk = pow(p, b, n)
+        print 'Sent(<-): ', Lk
+        self.key = pow(L0, b, n)
+        while self.key > 25:
+            self.key = self.key - 25
+        contact.key = pow(Lk, a, n)
+        while contact.key > 25:
+            contact.key = contact.key - 25
+
+    def encrypt(self):
+        newtext = ''
+        for char in self.text:
+            if char.isalpha() and (eng.index(char)+self.key > 24):
+                newtext += eng[eng.index(char)+self.key-24]
+            elif char.isalpha():
+                newtext += eng[eng.index(char)+self.key]
+            else:
+                newtext += char
+        self.text = newtext
+    def transcript(self):
+        newtext = ''
+        for char in self.text:
+            if char.isalpha() and (eng.index(char)-self.key < 0):
+                newtext +=  eng[eng.index(char)-self.key+24]
+            elif char.isalpha():
+                newtext += eng[eng.index(char)-self.key]
+            else:
+                newtext += c        self.text = newtext
+    def send(self, contact):
+        self.encrypt()
+        contact.text = self.text
+        print 'Sent(->): ', self.text, '\n---------------------'
+        self.transcript()
+        contact.transcript()
+    def sendRSA(self, contact):
+        for i 
+
+if __name__ == '__main__':
+    PCMoscow = Contact('moscow - best city all of the world', 13)
+    PCTver = Contact('tver better than Moscow', 4)
+    print '\nText before sending:\n  PCMoscow: ', PCMoscow.text, '\n  PCTver:', PCTver.text, '\n'
+    PCMoscow.getkey(PCTver)
+    PCMoscow.send(PCTver)
+    print '\nText after sending:\n  PCMoscow: ', PCMoscow.text, '\n  PCTver: ', PCTver.text, '\n'
